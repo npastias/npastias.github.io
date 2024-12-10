@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment #2 - Income Tax Calculator</title>
+    <style>
+        /* Gradient animation */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #84fab0, #8fd3f4, #a2d8f7);
+            background-size: 300% 300%;
+            animation: gradientBG 10s ease infinite;
+            color: #333;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffdd57;
+        }
+
+        /* Section styles */
+        .section {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        label {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        input {
+            font-size: 1rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            margin-right: 0.5rem;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #8fd3f4;
+            box-shadow: 0 0 5px #8fd3f4;
+        }
+
+        button {
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            background-color: #84fab0;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #62c19b;
+        }
+
+        #result {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Footer styles */
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-title">Ateneo de Davao University</div>
+        <div class="navbar-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#assignments" class="nav-link">Assignments</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <h1>Assignment #2 - Income Tax Calculator</h1>
+        <p>This assignment involves calculating income tax based on user input.</p>
+        <h3>Income Tax Calculation</h3>
+        <label for="income">Enter your annual income:</label>
+        <input type="number" id="income" placeholder="Annual Income" required />
+        <button onclick="calculateTax()" id="calculate-btn">Calculate Tax</button>
+        <p id="result" aria-live="polite"></p>
+
+        <script>
+            function calculateTax() {
+                const incomeInput = document.getElementById('income');
+                const income = parseFloat(incomeInput.value);
+                const result = document.getElementById('result');
+
+                if (isNaN(income) || income < 0) {
+                    result.innerText = 'Please enter a valid positive number.';
+                    return;
+                }
+
+                let tax;
+                if (income <= 250000) {
+                    tax = 0;
+                } else if (income <= 500000) {
+                    tax = (income - 250000) * 0.2;
+                } else {
+                    tax = (income - 500000) * 0.3 + 50000; // 50,000 is the tax for the first 500,000
+                }
+
+                result.innerText = `Your income tax is: ₱${tax.toFixed(2)}`;
+            }
+        </script>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; Noel Benedict L. Pastias / BS-INFOSYS.</p>
+    </footer>
+</body>
+</html>

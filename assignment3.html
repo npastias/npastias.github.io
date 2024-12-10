@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment #3 - Factorial, Sum, and Average</title>
+    <style>
+        /* Gradient animation for background */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fbc2eb);
+            background-size: 300% 300%;
+            animation: gradientBG 8s ease infinite;
+            color: #333;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffd700;
+        }
+
+        /* Section styling */
+        .section {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        input {
+            font-size: 1rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            margin-right: 0.5rem;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #fad0c4;
+            box-shadow: 0 0 5px #fad0c4;
+        }
+
+        button {
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            background-color: #ff9a9e;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #fa8072;
+        }
+
+        #factorialResult, #sumResult, #averageResult {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        /* Footer styling */
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-title">Ateneo de Davao University</div>
+        <div class="navbar-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#assignments" class="nav-link">Assignments</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <h1>Assignment #3 - Factorial, Sum, and Average</h1>
+        <p>This assignment involves calculating the factorial, sum, and average of the first N natural numbers.</p>
+        <label for="n">Enter a number (N):</label>
+        <input type="number" id="n" placeholder="Enter N" />
+        <button onclick="calculate()">Calculate</button>
+        <p id="factorialResult"></p>
+        <p id="sumResult"></p>
+        <p id="averageResult"></p>
+
+        <script>
+            function calculate() {
+                const n = parseInt(document.getElementById('n').value);
+                const factorialResult = document.getElementById('factorialResult');
+                const sumResult = document.getElementById('sumResult');
+                const averageResult = document.getElementById('averageResult');
+
+                if (isNaN(n) || n <= 0) {
+                    factorialResult.innerText = 'Please enter a positive integer.';
+                    sumResult.innerText = '';
+                    averageResult.innerText = '';
+                    return;
+                }
+
+                let factorial = 1;
+                let sum = 0;
+
+                // Calculate factorial, sum, and average
+                for (let i = 1; i <= n; i++) {
+                    factorial *= i;
+                    sum += i;
+                }
+
+                const average = sum / n;
+
+                // Display results
+                factorialResult.innerText = `Factorial of ${n} is: ${factorial}`;
+                sumResult.innerText = `Sum of first ${n} natural numbers is: ${sum}`;
+                averageResult.innerText = `Average of first ${n} natural numbers is: ${average}`;
+            }
+        </script>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 202Noel Benedict L. Pastias / BS-INFOSYS.</p>
+    </footer>
+</body>
+</html>

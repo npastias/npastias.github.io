@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment #4 - Simple Payroll Calculator</title>
+    <style>
+        /* Gradient background animation */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #89f7fe, #66a6ff, #91eae4);
+            background-size: 300% 300%;
+            animation: gradientBG 10s ease infinite;
+            color: #333;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffd700;
+        }
+
+        /* Section styling */
+        .section {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-size: 1.2rem;
+            display: block;
+            margin-top: 1rem;
+        }
+
+        input {
+            font-size: 1rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            margin-top: 0.5rem;
+            outline: none;
+            width: 50%;
+            max-width: 400px;
+        }
+
+        input:focus {
+            border-color: #66a6ff;
+            box-shadow: 0 0 5px #66a6ff;
+        }
+
+        button {
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            background-color: #66a6ff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4d85cc;
+        }
+
+        #payrollResult {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Footer styles */
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-title">Ateneo de Davao University</div>
+        <div class="navbar-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="assignments.html" class="nav-link">Assignments</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <h1>Assignment #4 - Simple Payroll Calculator</h1>
+        <p>This assignment involves calculating the total pay for an employee based on hours worked and hourly wage.</p>
+        
+        <label for="employeeName">Employee Name:</label>
+        <input type="text" id="employeeName" placeholder="Enter employee name" />
+        
+        <label for="hoursWorked">Hours Worked:</label>
+        <input type="number" id="hoursWorked" placeholder="Enter hours worked" />
+        
+        <label for="hourlyWage">Hourly Wage:</label>
+        <input type="number" id="hourlyWage" placeholder="Enter hourly wage" />
+        
+        <button onclick="calculatePayroll()">Calculate Payroll</button>
+        
+        <h3>Payroll Result:</h3>
+        <p id="payrollResult"></p>
+
+        <script>
+            function calculatePayroll() {
+                const name = document.getElementById('employeeName').value.trim();
+                const hours = parseFloat(document.getElementById('hoursWorked').value);
+                const wage = parseFloat(document.getElementById('hourlyWage').value);
+
+                if (name === "" || isNaN(hours) || isNaN(wage) || hours <= 0 || wage <= 0) {
+                    alert("Please fill in all fields correctly with valid values.");
+                    return;
+                }
+
+                const totalPay = hours * wage;
+                document.getElementById('payrollResult').innerText = `${name}'s total pay is: ₱${totalPay.toFixed(2)}`;
+            }
+        </script>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; Noel Benedict L. Pastias / BS-INFOSYS.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Assignment #1 - Conversion</title>
+
+    <!-- Inline CSS -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #1e3c72, #2a5298);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite;
+            color: #fff;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar-title {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1rem;
+        }
+
+        .navbar-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .converter {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 1rem;
+        }
+
+        input, button {
+            font-size: 1rem;
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            max-width: 300px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #ffcc00;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-title">Ateneo de Davao University</div>
+        <div class="navbar-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#assignments" class="nav-link">Assignments</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Assignment Section -->
+    <section class="section">
+        <h1>Assignment #1 - Conversion</h1>
+        <p>Use the converters below to perform basic unit conversions:</p>
+
+        <!-- Conversion Form -->
+        <div class="converter">
+            <label for="fahrenheit">Fahrenheit to Celsius</label>
+            <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit">
+            <button onclick="convertFahrenheitToCelsius()">Convert</button>
+            <p class="result" id="result-fahrenheit"></p>
+
+            <label for="celsius">Celsius to Fahrenheit</label>
+            <input type="number" id="celsius" placeholder="Enter Celsius">
+            <button onclick="convertCelsiusToFahrenheit()">Convert</button>
+            <p class="result" id="result-celsius"></p>
+
+            <label for="meters">Meters to Feet</label>
+            <input type="number" id="meters" placeholder="Enter Meters">
+            <button onclick="convertMetersToFeet()">Convert</button>
+            <p class="result" id="result-meters"></p>
+
+            <label for="feet">Feet to Meters</label>
+            <input type="number" id="feet" placeholder="Enter Feet">
+            <button onclick="convertFeetToMeters()">Convert</button>
+            <p class="result" id="result-feet"></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy;  Noel Benedict L. Pastias / BS-INFOSYS.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Conversion Functions
+        function convertFahrenheitToCelsius() {
+            const fahrenheit = document.getElementById("fahrenheit").value;
+            const celsius = ((fahrenheit - 32) * 5 / 9).toFixed(2);
+            document.getElementById("result-fahrenheit").innerText = `${fahrenheit}°F is ${celsius}°C`;
+        }
+
+        function convertCelsiusToFahrenheit() {
+            const celsius = document.getElementById("celsius").value;
+            const fahrenheit = ((celsius * 9 / 5) + 32).toFixed(2);
+            document.getElementById("result-celsius").innerText = `${celsius}°C is ${fahrenheit}°F`;
+        }
+
+        function convertMetersToFeet() {
+            const meters = document.getElementById("meters").value;
+            const feet = (meters * 3.28084).toFixed(2);
+            document.getElementById("result-meters").innerText = `${meters} meters is ${feet} feet`;
+        }
+
+        function convertFeetToMeters() {
+            const feet = document.getElementById("feet").value;
+            const meters = (feet / 3.28084).toFixed(2);
+            document.getElementById("result-feet").innerText = `${feet} feet is ${meters} meters`;
+        }
+    </script>
+</body>
+</html>
